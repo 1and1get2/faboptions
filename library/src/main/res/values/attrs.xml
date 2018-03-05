@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) Joaquim Ley 2016. All Rights Reserved.
   ~ <p/>
@@ -14,18 +15,17 @@
   ~ limitations under the License.
   -->
 
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="@dimen/faboptions_vector_dimensions"
-    android:height="@dimen/faboptions_vector_dimensions"
-    android:viewportHeight="24.0"
-    android:viewportWidth="24.0">
-
-    <path
-        android:name="main"
-        android:fillColor="#FFF"
-        android:pathData="@string/faboptions_vector_overflow_path"
-        android:strokeColor="#FFF"
-        android:strokeLineCap="round"
-        android:strokeWidth="4.1" />
-
-</vector>
+<resources>
+    <declare-styleable name="FabOptions">
+        <attr name="button_menu" format="reference" type="menu" />
+        <attr name="background_color" format="reference" type="int" />
+        <attr name="fab_color" format="reference" type="int" />
+        <attr name="direction" format="integer">
+            <flag name="split" value="0"/>
+            <flag name="up" value="1"/>
+            <flag name="down" value="2"/>
+            <flag name="left" value="3"/>
+            <flag name="right" value="4"/>
+        </attr>
+    </declare-styleable>
+</resources>

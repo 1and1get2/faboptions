@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) Joaquim Ley 2016. All Rights Reserved.
+  ~ Copyright (c) Joaquim Ley 2017. All Rights Reserved.
   ~ <p/>
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,14 +14,17 @@
   ~ limitations under the License.
   -->
 
-<set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:ordering="sequentially">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/faboptions_vector_dimensions"
+    android:height="@dimen/faboptions_vector_dimensions"
+    android:viewportHeight="24.0"
+    android:viewportWidth="24.0">
 
-    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
-        android:duration="@android:integer/config_shortAnimTime"
-        android:propertyName="pathData"
-        android:valueFrom="@string/faboptions_vector_close_path"
-        android:valueTo="@string/faboptions_vector_overflow_path"
-        android:valueType="pathType" />
+    <path
+        android:name="main"
+        android:pathData="@string/faboptions_vector_close_path"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeWidth="4.1" />
 
-</set>
+</vector>

@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) Joaquim Ley 2016. All Rights Reserved.
   ~ <p/>
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,13 @@
   ~ limitations under the License.
   -->
 
-<resources>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
 
-    <string name="faboptions_vector_overflow_path">M 6 12 L 6 12.1 M 12 12.1 L 12 12 M 18 12.1 L 18 12</string>
+    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:propertyName="pathData"
+        android:valueFrom="@string/faboptions_vector_overflow_path"
+        android:valueTo="@string/faboptions_vector_close_path"
+        android:valueType="pathType" />
 
-    <string name="faboptions_vector_close_path">M 6 6 L 18 18, M 12 12 L 12 12, M 6 18 L 18 6</string>
-
-</resources>
+</set>

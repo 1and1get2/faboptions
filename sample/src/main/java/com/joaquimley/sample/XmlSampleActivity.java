@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,73 +37,83 @@ import static com.joaquimley.faboptions.sample.R.id.toolbar;
 /**
  * Faboptions sample via XML {@see R.layout.activity_sample_xml}
  */
+
 public class XmlSampleActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Toolbar mToolbar;
+	static {
+		AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+	}
 
-    public static Intent newStartIntent(Context context) {
-        return new Intent(context, XmlSampleActivity.class);
-    }
+	private Toolbar mToolbar;
+	private FabOptions mFabOptions;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sample_xml);
-        mToolbar = (Toolbar) findViewById(toolbar);
-        mToolbar.setTitle(getString(R.string.title_activity_xml));
-        setSupportActionBar(mToolbar);
+	public static void start(Context context) {
+		context.startActivity(new Intent(context, XmlSampleActivity.class));
+	}
 
-        FabOptions fabOptions = (FabOptions) findViewById(R.id.fab_options);
-        fabOptions.setOnClickListener(this);
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sample_xml);
+		mToolbar = findViewById(toolbar);
+		mToolbar.setTitle(getString(R.string.title_activity_xml));
+		setSupportActionBar(mToolbar);
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.faboptions_favorite:
-                Toast.makeText(XmlSampleActivity.this, "Favorite", Toast.LENGTH_SHORT).show();
-                break;
+		mFabOptions = findViewById(R.id.fab_options);
+		mFabOptions.setOnClickListener(this);
+	}
 
-            case R.id.faboptions_textsms:
-                Toast.makeText(XmlSampleActivity.this, "Message", Toast.LENGTH_SHORT).show();
-                break;
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+			case R.id.faboptions_favorite:
+				mFabOptions.setButtonColor(R.id.faboptions_favorite, R.color.colorAccent);
+				Toast.makeText(XmlSampleActivity.this, "Favorite", Toast.LENGTH_SHORT).show();
+				break;
+
+			case R.id.faboptions_textsms:
+				mFabOptions.setButtonColor(R.id.faboptions_textsms, R.color.colorAccent);
+				Toast.makeText(XmlSampleActivity.this, "Message", Toast.LENGTH_SHORT).show();
+				break;
 
 
-            case R.id.faboptions_download:
-                Toast.makeText(XmlSampleActivity.this, "Download", Toast.LENGTH_SHORT).show();
-                break;
+			case R.id.faboptions_download:
+				mFabOptions.setButtonColor(R.id.faboptions_download, R.color.colorAccent);
+				Toast.makeText(XmlSampleActivity.this, "Download", Toast.LENGTH_SHORT).show();
+				break;
 
 
-            case R.id.faboptions_share:
-                Toast.makeText(XmlSampleActivity.this, "Share", Toast.LENGTH_SHORT).show();
-                break;
+			case R.id.faboptions_share:
+				mFabOptions.setButtonColor(R.id.faboptions_share, R.color.colorAccent);
+				Toast.makeText(XmlSampleActivity.this, "Share", Toast.LENGTH_SHORT).show();
+				break;
 
-            default:
-                // no-op
-        }
-    }
+			default:
+				// no-op
+		}
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_activity_main, menu);
-        return true;
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_activity_main, menu);
+		return true;
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_snackbar_test:
-                Snackbar.make(mToolbar, getString(R.string.action_snackbar_test_message),
-                        Snackbar.LENGTH_LONG).show();
-                return true;
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.action_snackbar_test:
+				Snackbar.make(mToolbar, getString(R.string.action_snackbar_test_message),
+						Snackbar.LENGTH_LONG).show();
+				return true;
 
-            case R.id.action_change_activity:
-                startActivity(JavaSampleActivity.newStartIntent(XmlSampleActivity.this));
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+			case R.id.action_change_activity:
+				JavaSampleActivity.start(XmlSampleActivity.this);
+				finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
 }

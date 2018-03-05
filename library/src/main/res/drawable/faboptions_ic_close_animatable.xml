@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<!--
   ~ Copyright (c) Joaquim Ley 2016. All Rights Reserved.
   ~ <p/>
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,11 @@
   ~ limitations under the License.
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <solid android:color="?attr/colorAccent" />
-
-    <corners android:radius="@dimen/faboptions_radius" />
-
-</shape>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/faboptions_ic_close"
+    tools:targetApi="lollipop">
+    <target
+        android:name="main"
+        android:animation="@animator/close_to_overflow" />
+</animated-vector>

@@ -14,15 +14,14 @@
   ~ limitations under the License.
   -->
 
-<resources>
-    <declare-styleable name="FabOptions">
-        <attr name="button_menu" format="reference" type="menu" />
-        <attr name="direction" format="integer">
-            <flag name="split" value="0"/>
-            <flag name="up" value="1"/>
-            <flag name="down" value="2"/>
-            <flag name="left" value="3"/>
-            <flag name="right" value="4"/>
-        </attr>
-    </declare-styleable>
-</resources>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+
+    <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        android:duration="@android:integer/config_shortAnimTime"
+        android:propertyName="pathData"
+        android:valueFrom="@string/faboptions_vector_close_path"
+        android:valueTo="@string/faboptions_vector_overflow_path"
+        android:valueType="pathType" />
+
+</set>
